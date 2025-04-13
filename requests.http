@@ -1,0 +1,26 @@
+### Criar UF
+POST http://localhost:3000/ufs
+Content-Type: application/json
+
+{
+  "nome": "Minas Gerais"
+}
+
+### Criar Cidade
+POST http://localhost:3000/cidades
+Content-Type: application/json
+
+{
+  "nome": "Belo Horizonte",
+  "ufId": 1
+}
+
+### Criar Estudante
+POST http://localhost:3000/estudantes
+Content-Type: application/json
+
+{
+  "nome": "João",
+  "idade": 20,
+  "cidadeId": 1
+}
