@@ -6,12 +6,12 @@ import {
   Patch,
   Param,
   Delete,
-} from '@nestjs/common';
-import { UfsService } from './ufs.service';
-import { CreateUfDto } from './dto/create-uf.dto';
-import { UpdateUfDto } from './dto/update-uf.dto';
+} from "@nestjs/common";
+import { UfsService } from "./ufs.service";
+import { CreateUfDto } from "./dto/create-uf.dto";
+import { UpdateUfDto } from "./dto/update-uf.dto";
 
-@Controller('ufs')
+@Controller("ufs")
 export class UfsController {
   constructor(private readonly ufsService: UfsService) {}
 
@@ -25,18 +25,18 @@ export class UfsController {
     return this.ufsService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
+  @Get(":id")
+  findOne(@Param("id") id: string) {
     return this.ufsService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUfDto: UpdateUfDto) {
+  @Patch(":id")
+  update(@Param("id") id: string, @Body() updateUfDto: UpdateUfDto) {
     return this.ufsService.update(+id, updateUfDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
+  @Delete(":id")
+  remove(@Param("id") id: string) {
     return this.ufsService.remove(+id);
   }
 }

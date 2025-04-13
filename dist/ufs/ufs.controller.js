@@ -53,29 +53,29 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UfsController.prototype, "findAll", null);
 __decorate([
-    (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Get)(":id"),
+    __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], UfsController.prototype, "findOne", null);
 __decorate([
-    (0, common_1.Patch)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Patch)(":id"),
+    __param(0, (0, common_1.Param)("id")),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, update_uf_dto_1.UpdateUfDto]),
     __metadata("design:returntype", void 0)
 ], UfsController.prototype, "update", null);
 __decorate([
-    (0, common_1.Delete)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Delete)(":id"),
+    __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], UfsController.prototype, "remove", null);
 exports.UfsController = UfsController = __decorate([
-    (0, common_1.Controller)('ufs'),
+    (0, common_1.Controller)("ufs"),
     __metadata("design:paramtypes", [ufs_service_1.UfsService])
 ], UfsController);
 //# sourceMappingURL=ufs.controller.js.map

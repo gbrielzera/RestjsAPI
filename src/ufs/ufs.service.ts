@@ -1,41 +1,35 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Uf } from './entities/uf.entity';
-import { CreateUfDto } from './dto/create-uf.dto';
-import { UpdateUfDto } from './dto/update-uf.dto';
-import { NotFoundException } from '@nestjs/common';
+import { Injectable } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Repository } from "typeorm";
+import { Uf } from "./entities/uf.entity";
+import { CreateUfDto } from "./dto/create-uf.dto";
+import { UpdateUfDto } from "./dto/update-uf.dto";
 
 @Injectable()
 export class UfsService {
   constructor(
     @InjectRepository(Uf)
-    private readonly ufRepository: Repository<Uf>,
+    private ufsRepository: Repository<Uf>,
   ) {}
 
-  create(createUfDto: CreateUfDto): Promise<Uf> {
-    const uf = this.ufRepository.create(createUfDto);
-    return this.ufRepository.save(uf);
+  create(createUfDto: CreateUfDto) {
+    const uf = this.ufsRepository.create(createUfDto);
+    return this.ufsRepository.save(uf);
   }
 
-  findAll(): Promise<Uf[]> {
-    return this.ufRepository.find();
+  findAll() {
+    return this.ufsRepository.find();
   }
 
-  async findOne(id: number): Promise<Uf> {
-    const uf = await this.ufRepository.findOne({ where: { id } });
-    if (!uf) {
-      throw new NotFoundException(`UF com ID ${id} não encontrada`);
-    }
-    return uf;
+  findOne(id: number) {
+    return this.ufsRepository.findOneBy({ id });
   }
 
-  async update(id: number, updateUfDto: UpdateUfDto): Promise<Uf> {
-    await this.ufRepository.update(id, updateUfDto);
-    return this.findOne(id);
+  update(id: number, updateUfDto: UpdateUfDto) {
+    return this.ufsRepository.update(id, updateUfDto);
   }
 
-  async remove(id: number): Promise<void> {
-    await this.ufRepository.delete(id);
+  remove(id: number) {
+    return this.ufsRepository.delete(id);
   }
 }

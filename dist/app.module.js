@@ -21,9 +21,9 @@ exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
             typeorm_1.TypeOrmModule.forRoot({
-                type: 'sqlite',
-                database: 'db.sqlite',
-                entities: [__dirname + '/**/*.entity{.ts,.js}'],
+                type: "sqlite",
+                database: "db.sqlite",
+                entities: [__dirname + "/**/*.entity{.ts,.js}"],
                 synchronize: true,
             }),
             ufs_module_1.UfsModule,

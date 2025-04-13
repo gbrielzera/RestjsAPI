@@ -1,17 +1,23 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-import { Cidade } from 'src/cidades/entities/cidade.entity';
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
+import { Cidade } from "../../cidades/entities/cidade.entity";
 
 @Entity()
 export class Estudante {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ length: 100 })
   nome: string;
 
-  @Column()
-  idade: number;
+  @Column({ length: 20, unique: true })
+  matricula: string;
 
-  @ManyToOne(() => Cidade, (cidade) => cidade.estudantes)
+  @Column({ length: 100, unique: true })
+  email: string;
+
+  @Column({ name: "dt_nascimento", length: 10 })
+  dtNascimento: string;
+
+  @ManyToOne(() => Cidade, (cidade) => cidade.id)
   cidade: Cidade;
 }

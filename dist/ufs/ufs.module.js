@@ -8,13 +8,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UfsModule = void 0;
 const common_1 = require("@nestjs/common");
+const typeorm_1 = require("@nestjs/typeorm");
 const ufs_service_1 = require("./ufs.service");
 const ufs_controller_1 = require("./ufs.controller");
+const uf_entity_1 = require("./entities/uf.entity");
 let UfsModule = class UfsModule {
 };
 exports.UfsModule = UfsModule;
 exports.UfsModule = UfsModule = __decorate([
     (0, common_1.Module)({
+        imports: [typeorm_1.TypeOrmModule.forFeature([uf_entity_1.Uf])],
         controllers: [ufs_controller_1.UfsController],
         providers: [ufs_service_1.UfsService],
     })

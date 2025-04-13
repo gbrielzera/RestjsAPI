@@ -12,12 +12,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Cidade = void 0;
 const typeorm_1 = require("typeorm");
 const uf_entity_1 = require("../../ufs/entities/uf.entity");
-const estudante_entity_1 = require("../../estudantes/entities/estudante.entity");
 let Cidade = class Cidade {
     id;
     nome;
     uf;
-    estudantes;
 };
 exports.Cidade = Cidade;
 __decorate([
@@ -25,17 +23,13 @@ __decorate([
     __metadata("design:type", Number)
 ], Cidade.prototype, "id", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.Column)({ length: 100 }),
     __metadata("design:type", String)
 ], Cidade.prototype, "nome", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => uf_entity_1.Uf, (uf) => uf.cidades),
+    (0, typeorm_1.ManyToOne)(() => uf_entity_1.Uf, (uf) => uf.id),
     __metadata("design:type", uf_entity_1.Uf)
 ], Cidade.prototype, "uf", void 0);
-__decorate([
-    (0, typeorm_1.OneToMany)(() => estudante_entity_1.Estudante, (estudante) => estudante.cidade),
-    __metadata("design:type", Array)
-], Cidade.prototype, "estudantes", void 0);
 exports.Cidade = Cidade = __decorate([
     (0, typeorm_1.Entity)()
 ], Cidade);

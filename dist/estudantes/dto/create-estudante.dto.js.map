@@ -1,1 +1,1 @@
-{"version":3,"file":"create-estudante.dto.js","sourceRoot":"","sources":["../../../src/estudantes/dto/create-estudante.dto.ts"],"names":[],"mappings":";;;AAAA,MAAa,kBAAkB;CAAG;AAAlC,gDAAkC"}
+{"version":3,"file":"create-estudante.dto.js","sourceRoot":"","sources":["../../../src/estudantes/dto/create-estudante.dto.ts"],"names":[],"mappings":";;;AAAA,MAAa,kBAAkB;IAC7B,IAAI,CAAS;IACb,SAAS,CAAS;IAClB,KAAK,CAAS;IACd,YAAY,CAAS;IACrB,QAAQ,CAAS;CAClB;AAND,gDAMC"}

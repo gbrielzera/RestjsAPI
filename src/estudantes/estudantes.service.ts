@@ -1,26 +1,96 @@
-import { Injectable } from '@nestjs/common';
-import { CreateEstudanteDto } from './dto/create-estudante.dto';
-import { UpdateEstudanteDto } from './dto/update-estudante.dto';
+import { Injectable } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Repository } from "typeorm";
+import { Estudante } from "./entities/estudante.entity";
+import { Cidade } from "../cidades/entities/cidade.entity";
+import { CreateEstudanteDto } from "./dto/create-estudante.dto";
+import { UpdateEstudanteDto } from "./dto/update-estudante.dto";
 
 @Injectable()
 export class EstudantesService {
-  create(createEstudanteDto: CreateEstudanteDto) {
-    return 'This action adds a new estudante';
+  constructor(
+    @InjectRepository(Estudante)
+    private estudantesRepository: Repository<Estudante>,
+    @InjectRepository(Cidade)
+    private cidadeRepository: Repository<Cidade>,
+  ) {}
+
+  async create(createEstudanteDto: CreateEstudanteDto) {
+    const cidade = await this.cidadeRepository.findOneBy({
+      id: createEstudanteDto.cidadeId,
+    });
+
+    if (!cidade) {
+      throw new Error("Cidade não encontrada");
+    }
+
+    const estudante = this.estudantesRepository.create({
+      nome: createEstudanteDto.nome,
+      matricula: createEstudanteDto.matricula,
+      email: createEstudanteDto.email,
+      dtNascimento: createEstudanteDto.dtNascimento,
+      cidade,
+    });
+
+    return this.estudantesRepository.save(estudante);
   }
 
-  findAll() {
-    return `This action returns all estudantes`;
+  async findAll() {
+    return this.estudantesRepository.find({
+      relations: ["cidade"],
+    });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} estudante`;
+  async findOne(id: number) {
+    const estudante = await this.estudantesRepository.findOne({
+      where: { id },
+      relations: ["cidade"],
+    });
+
+    if (!estudante) {
+      throw new Error("Estudante não encontrado");
+    }
+
+    return estudante;
   }
 
-  update(id: number, updateEstudanteDto: UpdateEstudanteDto) {
-    return `This action updates a #${id} estudante`;
+  async update(id: number, updateEstudanteDto: UpdateEstudanteDto) {
+    const estudante = await this.estudantesRepository.findOneBy({ id });
+
+    if (!estudante) {
+      throw new Error("Estudante não encontrado");
+    }
+
+    if (updateEstudanteDto.cidadeId) {
+      const cidade = await this.cidadeRepository.findOneBy({
+        id: updateEstudanteDto.cidadeId,
+      });
+
+      if (!cidade) {
+        throw new Error("Cidade não encontrada");
+      }
+      estudante.cidade = cidade;
+    }
+
+    if (updateEstudanteDto.nome) estudante.nome = updateEstudanteDto.nome;
+    if (updateEstudanteDto.matricula) {
+      estudante.matricula = updateEstudanteDto.matricula;
+    }
+    if (updateEstudanteDto.email) estudante.email = updateEstudanteDto.email;
+    if (updateEstudanteDto.dtNascimento) {
+      estudante.dtNascimento = updateEstudanteDto.dtNascimento;
+    }
+
+    return this.estudantesRepository.save(estudante);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} estudante`;
+  async remove(id: number) {
+    const result = await this.estudantesRepository.delete(id);
+
+    if (result.affected === 0) {
+      throw new Error("Estudante não encontrado");
+    }
+
+    return { message: "Estudante removido com sucesso" };
   }
 }

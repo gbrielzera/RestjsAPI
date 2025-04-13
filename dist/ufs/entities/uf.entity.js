@@ -11,11 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Uf = void 0;
 const typeorm_1 = require("typeorm");
-const cidade_entity_1 = require("../../cidades/entities/cidade.entity");
 let Uf = class Uf {
     id;
     nome;
-    cidades;
+    sigla;
 };
 exports.Uf = Uf;
 __decorate([
@@ -23,13 +22,13 @@ __decorate([
     __metadata("design:type", Number)
 ], Uf.prototype, "id", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.Column)({ length: 100, nullable: false }),
     __metadata("design:type", String)
 ], Uf.prototype, "nome", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => cidade_entity_1.Cidade, (cidade) => cidade.uf),
-    __metadata("design:type", Array)
-], Uf.prototype, "cidades", void 0);
+    (0, typeorm_1.Column)({ length: 2, unique: true, nullable: false }),
+    __metadata("design:type", String)
+], Uf.prototype, "sigla", void 0);
 exports.Uf = Uf = __decorate([
     (0, typeorm_1.Entity)()
 ], Uf);

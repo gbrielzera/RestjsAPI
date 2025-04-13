@@ -53,29 +53,29 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], EstudantesController.prototype, "findAll", null);
 __decorate([
-    (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Get)(":id"),
+    __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], EstudantesController.prototype, "findOne", null);
 __decorate([
-    (0, common_1.Patch)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Patch)(":id"),
+    __param(0, (0, common_1.Param)("id")),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, update_estudante_dto_1.UpdateEstudanteDto]),
     __metadata("design:returntype", void 0)
 ], EstudantesController.prototype, "update", null);
 __decorate([
-    (0, common_1.Delete)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Delete)(":id"),
+    __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], EstudantesController.prototype, "remove", null);
 exports.EstudantesController = EstudantesController = __decorate([
-    (0, common_1.Controller)('estudantes'),
+    (0, common_1.Controller)("estudantes"),
     __metadata("design:paramtypes", [estudantes_service_1.EstudantesService])
 ], EstudantesController);
 //# sourceMappingURL=estudantes.controller.js.map

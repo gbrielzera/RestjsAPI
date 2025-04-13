@@ -1,12 +1,11 @@
-// ufs.module.ts
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { Uf } from "./entities/uf.entity"; // Ajuste o caminho conforme sua estrutura
 import { UfsService } from "./ufs.service";
 import { UfsController } from "./ufs.controller";
+import { Uf } from "./entities/uf.entity";
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Uf])], // Isso torna UfRepository disponível
+  imports: [TypeOrmModule.forFeature([Uf])],
   controllers: [UfsController],
   providers: [UfsService],
 })

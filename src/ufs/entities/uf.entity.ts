@@ -1,14 +1,14 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { Cidade } from 'src/cidades/entities/cidade.entity';
+// src/ufs/entities/uf.entity.ts
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Uf {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ length: 100, nullable: false }) // Já é NOT NULL por padrão
   nome: string;
 
-  @OneToMany(() => Cidade, (cidade: Cidade) => cidade.uf)
-  cidades: Cidade[];
+  @Column({ length: 2, unique: true, nullable: false }) // Garanta que sigla é obrigatória
+  sigla: string;
 }

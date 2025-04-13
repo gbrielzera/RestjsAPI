@@ -15,7 +15,9 @@ const cidade_entity_1 = require("../../cidades/entities/cidade.entity");
 let Estudante = class Estudante {
     id;
     nome;
-    idade;
+    matricula;
+    email;
+    dtNascimento;
     cidade;
 };
 exports.Estudante = Estudante;
@@ -24,15 +26,23 @@ __decorate([
     __metadata("design:type", Number)
 ], Estudante.prototype, "id", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.Column)({ length: 100 }),
     __metadata("design:type", String)
 ], Estudante.prototype, "nome", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
-], Estudante.prototype, "idade", void 0);
+    (0, typeorm_1.Column)({ length: 20, unique: true }),
+    __metadata("design:type", String)
+], Estudante.prototype, "matricula", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => cidade_entity_1.Cidade, (cidade) => cidade.estudantes),
+    (0, typeorm_1.Column)({ length: 100, unique: true }),
+    __metadata("design:type", String)
+], Estudante.prototype, "email", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: "dt_nascimento", length: 10 }),
+    __metadata("design:type", String)
+], Estudante.prototype, "dtNascimento", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => cidade_entity_1.Cidade, (cidade) => cidade.id),
     __metadata("design:type", cidade_entity_1.Cidade)
 ], Estudante.prototype, "cidade", void 0);
 exports.Estudante = Estudante = __decorate([

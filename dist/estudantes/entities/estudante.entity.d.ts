@@ -1,7 +1,9 @@
-import { Cidade } from 'src/cidades/entities/cidade.entity';
+import { Cidade } from "../../cidades/entities/cidade.entity";
 export declare class Estudante {
     id: number;
     nome: string;
-    idade: number;
+    matricula: string;
+    email: string;
+    dtNascimento: string;
     cidade: Cidade;
 }

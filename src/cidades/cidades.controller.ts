@@ -6,12 +6,12 @@ import {
   Patch,
   Param,
   Delete,
-} from '@nestjs/common';
-import { CidadesService } from './cidades.service';
-import { CreateCidadeDto } from './dto/create-cidade.dto';
-import { UpdateCidadeDto } from './dto/update-cidade.dto';
+} from "@nestjs/common";
+import { CidadesService } from "./cidades.service";
+import { CreateCidadeDto } from "./dto/create-cidade.dto";
+import { UpdateCidadeDto } from "./dto/update-cidade.dto";
 
-@Controller('cidades')
+@Controller("cidades")
 export class CidadesController {
   constructor(private readonly cidadesService: CidadesService) {}
 
@@ -25,18 +25,18 @@ export class CidadesController {
     return this.cidadesService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
+  @Get(":id")
+  findOne(@Param("id") id: string) {
     return this.cidadesService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCidadeDto: UpdateCidadeDto) {
+  @Patch(":id")
+  update(@Param("id") id: string, @Body() updateCidadeDto: UpdateCidadeDto) {
     return this.cidadesService.update(+id, updateCidadeDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
+  @Delete(":id")
+  remove(@Param("id") id: string) {
     return this.cidadesService.remove(+id);
   }
 }

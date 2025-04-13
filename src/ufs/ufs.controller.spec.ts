@@ -1,8 +1,8 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { UfsController } from './ufs.controller';
-import { UfsService } from './ufs.service';
+import { Test, TestingModule } from "@nestjs/testing";
+import { UfsController } from "./ufs.controller";
+import { UfsService } from "./ufs.service";
 
-describe('UfsController', () => {
+describe("UfsController", () => {
   let controller: UfsController;
 
   beforeEach(async () => {
@@ -14,7 +14,7 @@ describe('UfsController', () => {
     controller = module.get<UfsController>(UfsController);
   });
 
-  it('should be defined', () => {
+  it("should be defined", () => {
     expect(controller).toBeDefined();
   });
 });

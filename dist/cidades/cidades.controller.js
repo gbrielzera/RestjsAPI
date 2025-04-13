@@ -53,29 +53,29 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], CidadesController.prototype, "findAll", null);
 __decorate([
-    (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Get)(":id"),
+    __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], CidadesController.prototype, "findOne", null);
 __decorate([
-    (0, common_1.Patch)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Patch)(":id"),
+    __param(0, (0, common_1.Param)("id")),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, update_cidade_dto_1.UpdateCidadeDto]),
     __metadata("design:returntype", void 0)
 ], CidadesController.prototype, "update", null);
 __decorate([
-    (0, common_1.Delete)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Delete)(":id"),
+    __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], CidadesController.prototype, "remove", null);
 exports.CidadesController = CidadesController = __decorate([
-    (0, common_1.Controller)('cidades'),
+    (0, common_1.Controller)("cidades"),
     __metadata("design:paramtypes", [cidades_service_1.CidadesService])
 ], CidadesController);
 //# sourceMappingURL=cidades.controller.js.map
