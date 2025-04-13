@@ -1,26 +1,97 @@
-### Criar UF
-POST http://localhost:3000/ufs
+@baseUrl = http://localhost:3000
+
+### 1. Testes para UFs
+
+#### Listar todas as UFs
+GET {{baseUrl}}/ufs
+
+#### Criar uma nova UF
+POST {{baseUrl}}/ufs
 Content-Type: application/json
 
 {
-  "nome": "Minas Gerais"
+  "nome": "São Paulo",
+  "sigla": "SP"
 }
 
-### Criar Cidade
-POST http://localhost:3000/cidades
+#### Buscar UF por ID
+GET {{baseUrl}}/ufs/1
+
+#### Atualizar UF
+PATCH {{baseUrl}}/ufs/1
 Content-Type: application/json
 
 {
-  "nome": "Belo Horizonte",
+  "nome": "São Paulo - Alterado"
+}
+
+#### Deletar UF
+DELETE {{baseUrl}}/ufs/1
+
+### 2. Testes para Cidades
+
+#### Listar todas as cidades
+GET {{baseUrl}}/cidades
+
+#### Criar uma nova cidade
+POST {{baseUrl}}/cidades
+Content-Type: application/json
+
+{
+  "nome": "São Paulo",
   "ufId": 1
 }
 
-### Criar Estudante
-POST http://localhost:3000/estudantes
+#### Buscar cidade por ID
+GET {{baseUrl}}/cidades/1
+
+#### Atualizar cidade
+PATCH {{baseUrl}}/cidades/1
 Content-Type: application/json
 
 {
-  "nome": "João",
-  "idade": 20,
+  "nome": "São Paulo - Capital"
+}
+
+#### Deletar cidade
+DELETE {{baseUrl}}/cidades/1
+
+### 3. Testes para Estudantes
+
+#### Listar todos os estudantes
+GET {{baseUrl}}/estudantes
+
+#### Criar um novo estudante
+POST {{baseUrl}}/estudantes
+Content-Type: application/json
+
+{
+  "nome": "João Silva",
+  "matricula": "20230001",
+  "email": "joao@email.com",
+  "dtNascimento": "2000-01-01",
   "cidadeId": 1
 }
+
+#### Buscar estudante por ID
+GET {{baseUrl}}/estudantes/1
+
+#### Atualizar estudante
+PATCH {{baseUrl}}/estudantes/1
+Content-Type: application/json
+
+{
+  "nome": "João da Silva",
+  "email": "joao.silva@email.com"
+}
+
+#### Deletar estudante
+DELETE {{baseUrl}}/estudantes/1
+
+### 4. Testes com relacionamentos
+
+#### Listar estudantes com cidade e UF
+GET {{baseUrl}}/estudantes?expand=cidade.uf
+
+#### Listar cidades com UF
+GET {{baseUrl}}/cidades?expand=uf
